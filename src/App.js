@@ -9,16 +9,13 @@ function App() {
   ]);
   const pasteHandle = (e) => {
     e.preventDefault();
-    const pastedData = e.clipboardData("text");
+    const pastedData = e.clipboardData.getData("text");
     if (pastedData) {
-      const arr = pastedData
-        .split("\n")
-        .map((text) => {
-          console.log(arr)
+      const arr = pastedData.split("\n").map((text) => {
           let [key, value] = text.split("=");
           return { key, value };
-        })
-        .filter(Boolean);
+        }).filter(Boolean);
+      console.log(arr);
     }
   };
   return (
